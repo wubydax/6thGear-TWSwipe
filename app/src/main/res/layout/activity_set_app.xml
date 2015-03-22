@@ -1,0 +1,59 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin" tools:context=".SetAppActivity">
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold|italic"
+        android:text="@string/set_shortcut_title"
+        android:id="@+id/titleSetShortcut"
+        android:textAlignment="center"
+        android:layout_alignParentStart="true" />
+
+    <Button
+
+        android:text="@string/set_shortcut_button"
+        android:layout_margin="15dp"
+        android:id="@+id/chooseShortcut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:elevation="4dp"
+        android:textSize="20dp"
+        android:textColor="@color/accent"
+        android:padding="15dp"
+        android:onClick="chooseShortcut"
+        android:layout_below="@id/titleSetShortcut"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold|italic"
+        android:text="@string/set_app_title"
+        android:id="@+id/titleSetApp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/chooseShortcut"
+        />
+
+
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:scrollbarStyle="outsideOverlay"
+        android:smoothScrollbar="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/titleSetApp"
+        />
+
+
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">6thGear TWSwipe</string>
+    <string name="action_settings">About</string>
+    <string name="title_activity_reset_dialog">Swipe Reset</string>
+    <string name="swipe_reset_title">Reset your swipe app</string>
+    <string name="swipe_reset_no_prefs">Your swipe app preferences are empty. Would you like to set  a default swipe behaviour now?</string>
+    <string name="swipe_reset_message">"Your current default swipe action is set to %1$s\n\nTo reset the preferences and set a different swipe action, please click OK"</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
+    <string name="prefs_saved_dialog_title">Preference Saved</string>
+    <string name="reset">Reset</string>
+    <string name="prefs_saved_app_dialog_message">"Your swipe default app was set to %1$s.\n\nTo confirm press OK.\n\nTo choose a different app press RESET"</string>
+    <string name="prefs_saved_shortcut_dialog_message">"Your swipe default shortcut was set to %1$s.\n\nTo confirm press OK.\n\nTo choose a different app press RESET"</string>
+    <string name="shortcut_chooser_title">Choose Shortcut for Swipe Action</string>
+    <string name="progress_message">Loading app list...</string>
+    <string name="set_shortcut_title">To set custom shortcut, click the button below:</string>
+    <string name="set_app_title">Or choose an app from the list:</string>
+    <string name="set_shortcut_button">Set Custom Shortcut</string>
+    <string name="about_title">About 6thGear TWSwipe</string>
+    <string name="about_message">"This application was developed by 6ThGear team to allow you to set custom action to the swipe feature of TW Launcher.
+    \nAs a standalone app it will have no effect whatsoever on your built in launcher. It needs to be modded into the TW Launcher application by your rom developer.
+    \nIf this app was included in the rom you're using, chances are your TW Launcher is modded accordingly and once you set a custom action, your launcher's swipe feature will display it.
+    \nWe hope you enjoy our little contribution to the android development comunity
+    \n6thGear Team: Wuby986, Peppe130 and Daxgirl"</string>
+
+
+</resources>
+

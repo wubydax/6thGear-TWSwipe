@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">6thGear TWSwipe</string>
+    <string name="action_settings">Info</string>
+    <string name="title_activity_reset_dialog">Reset Swipe</string>
+    <string name="swipe_reset_title">Resetta app impostata per swipe</string>
+    <string name="swipe_reset_no_prefs">Non hai impostato nessuna app per lo swipe. Vuoi impostarne una ora?</string>
+    <string name="swipe_reset_message">"L'app impostata attualmente è %1$s\n\nPer resettare la scelta premi OK"</string>
+    <string name="cancel">Cancella</string>
+    <string name="ok">Ok</string>
+    <string name="prefs_saved_dialog_title">Preferenze Salvate</string>
+    <string name="reset">Resetta</string>
+    <string name="prefs_saved_app_dialog_message">"L'app swipe che verrà impostata è %1$s\n\nPer confermare premi OK\n\nPer Scegliere un' app differente premi RESETTA"</string>
+    <string name="prefs_saved_shortcut_dialog_message">"La shortcut swipe che verrà impostata è %1$s\n\nPer confermare premi OK.\n\nPer scegliere una shortcut differente premi RESETTA"</string>
+    <string name="shortcut_chooser_title">Seleziona la Shortcut per lo swipe</string>
+    <string name="progress_message">Caricamento app...</string>
+    <string name="set_shortcut_title">Per selezionare una shortcut premi il bottone qui sotto:</string>
+    <string name="set_app_title">Oppure seleziona una app dalla lista:</string>
+    <string name="set_shortcut_button">Imposta Shortcut</string>
+    <string name="about_title">Informazioni 6thGear TWSwipe</string>
+    <string name="about_message">"Questa applicazione è stata sviluppata dal team 6Th Gear per permettervi di customizzare l'azione di swipe del launcher TW samsung.
+        \nL' app necessita del launcher TW modificato dal Developper della Rom per poter funzionare o non avrà effetto.
+        \nSe questa applicazione era inclusa nella Rom che hai installato allora il TW launcher che hai installato la supporta.
+        \nSperiamo vi piaccia il nostro contributo alla comunità android.
+        \n6ThGear Team: DaxGirl, Peppe130 e Wuby986"</string>
+</resources>

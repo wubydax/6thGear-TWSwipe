@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">6thGear TWSwipe</string>
+    <string name="action_settings">אודות</string>
+    <string name="title_activity_reset_dialog">איתחול TWSwipe</string>
+    <string name="swipe_reset_title">הגדר מחדש את פעולת הswipe שלך</string>
+    <string name="swipe_reset_no_prefs">לא נמצאו העדפות swipe. האם ברצונך לקבוע הגדרות ברירת מחדל עבור פעולת הswipe כעת?</string>
+    <string name="swipe_reset_message">"פעולת הswipe כרגע מוגדרת ל- %1$s\n\nעל מנת לייחס יישום או קיצור דרך שונה לפעולת הswipe, אנא לחץ אישור"</string>
+    <string name="cancel">ביטול</string>
+    <string name="ok">אישור</string>
+    <string name="prefs_saved_dialog_title">הגדרות נשמרו</string>
+    <string name="reset">הגדר מחדש</string>
+    <string name="prefs_saved_app_dialog_message">"יישום ברירת מחדל עבור פעולת הswipe נקבע ל- %1$s\n\nלשמירת הגדרות לחץ "אישור"\n\nלקביעת יישום swipe חדש לחץ "הגדר מחדש""</string>
+    <string name="prefs_saved_shortcut_dialog_message">"קיצור דרך ברירת מחדל עבור פעולת הswipe נקבע ל- %1$s\n\nלשמירת הגדרות לחץ "אישור"\n\nלקביעת קיצור דרך שונה עבור swipe לחץ "הגדר מחדש""</string>
+    <string name="shortcut_chooser_title">בחר קיצור דרך עבוד פעולת הסווייפ</string>
+    <string name="progress_message">טוען את רשימת היישומים...</string>
+    <string name="set_shortcut_title">לקביעת קיצור דרך בהתאמה אישית, יש ללחוץ על הכפתור:</string>
+    <string name="set_app_title">או לבחור יישום מהרשימה להלן:</string>
+    <string name="set_shortcut_button">קיצור דרך בהתאמה אישית</string>
+    <string name="about_title">אודות 6thGear TWSwipe</string>
+    <string name="about_message">"יישום זה פותח על ידי צוות 6thGear על מנת לאפשר לך לקבוע פעולה בהתאמה אישית עבור מחוות ה\"החלקה\" או מה שנקרא swipe של TWLauncher.
+    \nכיישום בודד הוא חסר כל משמעות עבור ה-launcher המובנה של סמסונג. על המפתח של הרום לבנות מוד ייחודי על יישום TWLauncher על מנת שהיישום יעבוד כראוי.
+    \nבמידה ויישום זה כלול ברום שהינך משתמש בו, רוב הסיכויים שיישום TWLauncher עבר את השינוי הדרוש ובמידה ותקבע מחווה בהתאמה אישית, תכונת ה-swipe של ה-Launcher המובנה תותאם לפי בחירתך.
+    \nכולנו תקווה שתהנו מתרומתנו הקטנה לקהילת הפיתוח לאנדרואיד!
+    \nהצוות שלנו: Wuby986, Peppe130 ו-Daxgirl"</string>
+</resources>
