@@ -117,15 +117,16 @@ public class SetAppActivity extends Activity {
     }
     //We create a list of ApplicationInfo Objects from which we can retrieve the information we need for setView of the List adapter.
     //We use getLaunchIntentForPackage method to only get apps with "good" intent that will launch for sure. In short we only get launcher available apps into this list.
-    private List<ApplicationInfo> createAppList(PackageManager pm, final List<ApplicationInfo> list) {
+    private List<ApplicationInfo> createAppList() {
         ArrayList<ApplicationInfo> appList = new ArrayList<ApplicationInfo>();
+        List<ApplicationInfo> list = pm.getInstalledApplications(PackageManager.GET_META_DATA);
 
-        for (ApplicationInfo mAppInfo : list){
+        for (int i=0; i<list.size(); i++){
             try {
-                if (pm.getLaunchIntentForPackage(mAppInfo.packageName)==null){
+                if (pm.getLaunchIntentForPackage(list.get(i).packageName)==null){
                     continue;
                 }
-                appList.add(mAppInfo);
+                appList.add(list.get(i));
             }
             catch (Exception ex) {
                 ex.printStackTrace();
@@ -211,7 +212,7 @@ public class SetAppActivity extends Activity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            mAppList = createAppList(pm, pm.getInstalledApplications(PackageManager.GET_META_DATA));
+            mAppList = createAppList();
             //Sorting the ApplicationInfo list by alphabetical order based on loadLabel method (application name)
             Collections.sort(mAppList, new Comparator<ApplicationInfo>()
             {
