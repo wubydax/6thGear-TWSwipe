@@ -140,5 +140,11 @@ public class MyDialogFragment extends DialogFragment {
         super.onSaveInstanceState(outState);
     }
 
-
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        if(mRequestCode == 0) {
+            getActivity().finish();
+        }
+    }
 }
