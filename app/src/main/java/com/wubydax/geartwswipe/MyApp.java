@@ -1,5 +1,8 @@
 package com.wubydax.geartwswipe;
 
+import android.app.Application;
+import android.content.Context;
+
 /*      Created by Roberto Mariani and Anna Berkovitch, 2015
         This program is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
@@ -13,20 +16,16 @@ package com.wubydax.geartwswipe;
 
         You should have received a copy of the GNU General Public License
         along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
-
-import android.app.Activity;
-import android.os.Bundle;
-
-
-public class ResetDialogActivity extends Activity {
-
+public class MyApp extends Application {
+    public static  Context CONTEXT;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-       getFragmentManager().beginTransaction().add(MyDialogFragment.newInstance(0), "my_dialog").commit();
-
+    public void onCreate() {
+        super.onCreate();
+        CONTEXT = this;
     }
 
-
+    public static Context getContext() {
+        return CONTEXT;
+    }
 }

@@ -1,5 +1,8 @@
 package com.wubydax.geartwswipe;
 
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+
 /*      Created by Roberto Mariani and Anna Berkovitch, 2015
         This program is free software: you can redistribute it and/or modify
         it under the terms of the GNU General Public License as published by
@@ -13,20 +16,10 @@ package com.wubydax.geartwswipe;
 
         You should have received a copy of the GNU General Public License
         along with this program.  If not, see <http://www.gnu.org/licenses/>.*/
-
-import android.app.Activity;
-import android.os.Bundle;
-
-
-public class ResetDialogActivity extends Activity {
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-       getFragmentManager().beginTransaction().add(MyDialogFragment.newInstance(0), "my_dialog").commit();
-
-    }
-
-
+public class AppInfo {
+    String mPackageName;
+    String mActivityName;
+    String mAppLabel;
+    Intent mIntent;
+    Drawable mAppIcon;
 }
