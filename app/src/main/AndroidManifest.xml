@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wubydax.geartwswipe" >
     <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <!--<uses-permission android:name="android.permission.CALL_PRIVILEGED"/>-->
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED"/>
 
     <application
         android:name=".MyApp"
