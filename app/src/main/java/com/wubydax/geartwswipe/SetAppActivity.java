@@ -48,6 +48,7 @@ public class SetAppActivity extends Activity implements PopulateAppListTask.OnTa
         if (components != null) {
             //Translucent theme with no title bar is the app is launching shortcut or app and not itself
             Intent openApp = new Intent();
+            openApp.setAction(Intent.ACTION_MAIN);
             String[] componentItems = components.split("/");
             openApp.setComponent(new ComponentName(componentItems[0], componentItems[1]));
             if (getPackageManager().resolveActivity(openApp, 0) != null) {
