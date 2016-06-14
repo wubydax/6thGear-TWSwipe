@@ -1,5 +1,6 @@
 package com.wubydax.geartwswipe;
 
+import android.preference.PreferenceManager;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -101,7 +102,8 @@ public class AppListAdapter extends BaseAdapter implements SectionIndexer {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            LayoutInflater inflater = LayoutInflater.from(new ContextThemeWrapper(MyApp.getContext(), R.style.AppTheme));
+            int themeId = PreferenceManager.getDefaultSharedPreferences(MyApp.getContext()).getInt("theme_code", 0) == 0 ? R.style.AppTheme : R.style.AppThemeDark;
+            LayoutInflater inflater = LayoutInflater.from(new ContextThemeWrapper(MyApp.getContext(), themeId));
             convertView = inflater.inflate(R.layout.app_item, parent, false);
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.mAppNames = (TextView) convertView.findViewById(R.id.appName);

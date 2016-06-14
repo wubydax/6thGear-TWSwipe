@@ -24,4 +24,9 @@
         \nSperiamo vi piaccia il nostro contributo alla comunità android.
         \n6ThGear Team: DaxGirl, Peppe130 e Wuby986"</string>
     <string name="set_up_twswipe">Impostare TwSwipe</string>
+    <string name="theme_dialog_title">Scegli colore tema</string>
+    <string-array name="theme_entries">
+        <item>Tema bianco (di default)</item>
+        <item>Tema scuro</item>
+    </string-array>
 </resources>

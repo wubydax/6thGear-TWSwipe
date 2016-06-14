@@ -32,6 +32,7 @@ public class MyDialogFragment extends DialogFragment {
 
     private static final String REQUEST_CODE = "dialog_request_code";
     private int mRequestCode;
+    private int mThemeId;
 
     public MyDialogFragment() {
         // Required empty public constructor
@@ -49,43 +50,65 @@ public class MyDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         mRequestCode = savedInstanceState != null ? savedInstanceState.getInt(REQUEST_CODE) : getArguments().getInt(REQUEST_CODE);
-        String namePlaceHolder = null;
-        String dialogMessage = getString(R.string.swipe_reset_message);
-        switch (mRequestCode) {
-            case 0:
-                dialogMessage = getString(R.string.swipe_reset_message);
-                break;
-            case 1:
-                dialogMessage = getString(R.string.prefs_saved_app_dialog_message);
-                break;
-            case 2:
-                dialogMessage = getString(R.string.prefs_saved_shortcut_dialog_message);
-                break;
+        mThemeId = PreferenceManager.getDefaultSharedPreferences(MyApp.getContext()).getInt("theme_code", 0) == 0 ? R.style.AppTheme : R.style.AppThemeDark;
+        if(mRequestCode != 4) {
+            String namePlaceHolder = null;
+            String dialogMessage = getString(R.string.swipe_reset_message);
+            switch (mRequestCode) {
+                case 0:
+                    dialogMessage = getString(R.string.swipe_reset_message);
+                    break;
+                case 1:
+                    dialogMessage = getString(R.string.prefs_saved_app_dialog_message);
+                    break;
+                case 2:
+                    dialogMessage = getString(R.string.prefs_saved_shortcut_dialog_message);
+                    break;
 
-        }
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String appComponents = sharedPreferences.getString(SetAppActivity.OPEN_APP_KEY, null);
-        String shortcutName = sharedPreferences.getString(SetAppActivity.SHORTCUT_NAME_KEY, null);
-        if (appComponents != null) {
-            String[] components = appComponents.split("/");
-            Intent intent = new Intent();
-            intent.setComponent(new ComponentName(components[0], components[1]));
-            ResolveInfo resolveInfo = MyApp.getContext().getPackageManager().resolveActivity(intent, 0);
-            if (resolveInfo != null) {
-                namePlaceHolder = resolveInfo.loadLabel(MyApp.getContext().getPackageManager()).toString();
             }
-        } else if (shortcutName != null) {
-            namePlaceHolder = shortcutName;
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String appComponents = sharedPreferences.getString(SetAppActivity.OPEN_APP_KEY, null);
+            String shortcutName = sharedPreferences.getString(SetAppActivity.SHORTCUT_NAME_KEY, null);
+            if (appComponents != null) {
+                String[] components = appComponents.split("/");
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(components[0], components[1]));
+                ResolveInfo resolveInfo = MyApp.getContext().getPackageManager().resolveActivity(intent, 0);
+                if (resolveInfo != null) {
+                    namePlaceHolder = resolveInfo.loadLabel(MyApp.getContext().getPackageManager()).toString();
+                }
+            } else if (shortcutName != null) {
+                namePlaceHolder = shortcutName;
+            }
+            boolean isActionSet = namePlaceHolder != null;
+            dialogMessage = isActionSet ? String.format(dialogMessage, namePlaceHolder) : getString(R.string.swipe_reset_no_prefs);
+            return isActionSet ? getResetDialog(dialogMessage) : getSetUpDialog(dialogMessage);
+        } else {
+            return getThemeDialog();
         }
-        boolean isActionSet = namePlaceHolder != null;
-        dialogMessage = isActionSet ? String.format(dialogMessage, namePlaceHolder) : getString(R.string.swipe_reset_no_prefs);
-        return isActionSet ? getResetDialog(dialogMessage) : getSetUpDialog(dialogMessage);
 
 
     }
 
+    private Dialog getThemeDialog() {
+        int selectedTheme = PreferenceManager.getDefaultSharedPreferences(getActivity()).getInt("theme_code", 0);
+        return new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), mThemeId))
+                .setTitle(R.string.theme_dialog_title)
+                .setIcon(R.mipmap.ic_launcher)
+                .setSingleChoiceItems(getActivity().getResources().getStringArray(R.array.theme_entries), selectedTheme, null)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int selected = ((AlertDialog) dialog).getListView().getCheckedItemPosition();
+                        PreferenceManager.getDefaultSharedPreferences(getActivity()).edit().putInt("theme_code", selected).apply();
+                    }
+                })
+                .create();
+    }
+
     private AlertDialog getSetUpDialog(String dialogMessage) {
-        return new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AppTheme))
+        return new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), mThemeId))
                 .setTitle(R.string.set_up_twswipe)
                 .setMessage(dialogMessage)
                 .setIcon(R.mipmap.ic_launcher)
@@ -106,7 +129,7 @@ public class MyDialogFragment extends DialogFragment {
     }
 
     private AlertDialog getResetDialog(String dialogMessage) {
-        return new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), R.style.AppTheme))
+        return new AlertDialog.Builder(new ContextThemeWrapper(getActivity(), mThemeId))
                 .setTitle(mRequestCode == 0 ? R.string.swipe_reset_title : R.string.prefs_saved_dialog_title)
                 .setMessage(dialogMessage)
                 .setIcon(R.mipmap.ic_launcher)
@@ -140,6 +163,7 @@ public class MyDialogFragment extends DialogFragment {
         super.onSaveInstanceState(outState);
     }
 
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -147,4 +171,6 @@ public class MyDialogFragment extends DialogFragment {
             getActivity().finish();
         }
     }
+
+
 }

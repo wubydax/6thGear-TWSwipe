@@ -24,6 +24,12 @@
     \n6thGear Team: Wuby986 and Daxgirl"</string>
 
     <string name="set_up_twswipe">Set Up TwSwipe</string>
+    <string name="theme_dialog_title">Choose color theme</string>
+
+    <string-array name="theme_entries">
+        <item>Light (default) theme</item>
+        <item>Dark theme</item>
+    </string-array>
 
 
 </resources>

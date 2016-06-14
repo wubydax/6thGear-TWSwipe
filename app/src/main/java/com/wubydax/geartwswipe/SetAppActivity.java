@@ -31,7 +31,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 
-public class SetAppActivity extends Activity implements PopulateAppListTask.OnTaskCompletedListener {
+public class SetAppActivity extends Activity implements PopulateAppListTask.OnTaskCompletedListener
+, SharedPreferences.OnSharedPreferenceChangeListener{
     public static final String OPEN_APP_KEY = "swipe_app";
     public static final String SHORTCUT_ACTION_KEY = "action";
     public static final String SHORTCUT_NAME_KEY = "name";
@@ -82,12 +83,25 @@ public class SetAppActivity extends Activity implements PopulateAppListTask.OnTa
     }
 
     private void setUpList() {
-        setTheme(R.style.AppTheme);
+        int themeCode = mPreferences.getInt("theme_code", 0);
+        setTheme(themeCode == 0 ? R.style.AppTheme : R.style.AppThemeDark);
         setContentView(R.layout.activity_set_app);
         PopulateAppListTask listTask = new PopulateAppListTask();
         listTask.setOnTaskCompletedListener(this);
         findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
         listTask.execute();
+    }
+
+    @Override
+    protected void onResume() {
+        mPreferences.registerOnSharedPreferenceChangeListener(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        mPreferences.unregisterOnSharedPreferenceChangeListener(this);
+        super.onPause();
     }
 
     @Override
@@ -103,13 +117,13 @@ public class SetAppActivity extends Activity implements PopulateAppListTask.OnTa
         int id = item.getItemId();
 
         if (id == R.id.action_settings) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
-            ft.add(new AboutFragment(), "about");
-            ft.commitAllowingStateLoss();
-            return true;
+             getFragmentManager().beginTransaction().add(new AboutFragment(), "about").commitAllowingStateLoss();
+
+        } else if (id == R.id.action_theme) {
+            getFragmentManager().beginTransaction().add(MyDialogFragment.newInstance(4), "theme_chooser").commit();
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     //Void method to display the shortcut picker dialog on button click. The reference to this method is in the layout file in widget Button attributes
@@ -185,6 +199,15 @@ public class SetAppActivity extends Activity implements PopulateAppListTask.OnTa
     }
 
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        if(key.equals("theme_code")) {
+            finish();
+            this.overridePendingTransition(0, R.animator.fadeout);
+            startActivity(new Intent(this, SetAppActivity.class));
+            this.overridePendingTransition(R.animator.fadein, 0);
+        }
+    }
 }
 
 

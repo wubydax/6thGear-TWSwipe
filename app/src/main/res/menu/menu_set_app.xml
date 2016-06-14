@@ -7,4 +7,11 @@
         android:showAsAction="always"
         android:icon="@drawable/ic_info"
         android:title="@string/action_settings" />
+
+    <item
+        android:id="@+id/action_theme"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_theme"
+        android:title="Themes" />
 </menu>

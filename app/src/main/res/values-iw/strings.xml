@@ -23,4 +23,9 @@
     \nכולנו תקווה שתהנו מתרומתנו הקטנה לקהילת הפיתוח לאנדרואיד!
     \nהצוות שלנו: Wuby986, Peppe130 ו-Daxgirl"</string>
     <string name="set_up_twswipe">הגדר TwSwipe</string>
+    <string name="theme_dialog_title">בחר ערכת נושא</string>
+    <string-array name="theme_entries">
+        <item>ערכה לבנה (ברירת מחדל)</item>
+        <item>ערכה כהה</item>
+    </string-array>
 </resources>
